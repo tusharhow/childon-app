@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'screens/splash/splash.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -10,20 +12,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'ChildOn',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomePage(),
+      home: const SplashSecond(),
     );
   }
 }
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold();
-  }
-}
