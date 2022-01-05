@@ -1,3 +1,4 @@
+import 'package:childon/components/location_row.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/components/carousel/gf_carousel.dart';
 
@@ -113,34 +114,3 @@ class _ExploreState extends State<Explore> {
   }
 }
 
-class LocationRow extends StatelessWidget {
-  const LocationRow({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {},
-      child: Row(
-        children: [
-          Image(
-            image: AssetImage('assets/zorlu.png'),
-            height: 55,
-          ),
-          SizedBox(
-            width: 30,
-          ),
-          Text(
-            'Zorlu Çocuk Tiyatrosu\nTurkey Istanbul',
-            style: TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.w700,
-            ),
-            textAlign: TextAlign.justify,
-          ),
-        ],
-      ),
-    );
-  }
-}
