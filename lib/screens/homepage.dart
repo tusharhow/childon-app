@@ -35,47 +35,48 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
             BottomNavigationBarItem(
                 icon: Icon(
                   Icons.search,
-                  size: 30,
+                  size: 30, color: Colors.black,
                 ),
                 title: Text(
                   'Explore',
                 ),
-                backgroundColor: Colors.grey),
+                backgroundColor: Colors.white),
             BottomNavigationBarItem(
                 icon: ImageIcon(
                   AssetImage('assets/team.png'),
-                  size: 30,
+                  size: 30, color: Colors.black,
                 ),
                 title: Text('Social'),
-                backgroundColor: Colors.grey),
+                backgroundColor: Colors.white),
             BottomNavigationBarItem(
                 icon: ImageIcon(
                   AssetImage('assets/feed.png'),
-                  size: 30,
+                  size: 30, color: Colors.black,
                 ),
                 title: Text('Feed'),
-                backgroundColor: Colors.grey),
+                backgroundColor: Colors.white),
             BottomNavigationBarItem(
                 icon: ImageIcon(
                   AssetImage('assets/noti.png'),
                   size: 30,
+                  color: Colors.black,
                 ),
                 title: Text('Notifications'),
-                backgroundColor: Colors.grey),
+                backgroundColor: Colors.white),
             BottomNavigationBarItem(
                 icon: ImageIcon(
                   AssetImage(
                     'assets/user.png',
-                  ),
+                  ), color: Colors.black,
                   size: 30,
                 ),
                 title: Text('Me'),
-                backgroundColor: Colors.grey),
+                backgroundColor: Colors.white),
           ],
           type: BottomNavigationBarType.shifting,
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.black,
           currentIndex: _selectedIndex,
-          selectedItemColor: Colors.white,
+          selectedItemColor: Colors.red,
           iconSize: 45,
           onTap: (index) => setState(() {
             _selectedIndex = index;
