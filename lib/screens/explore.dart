@@ -1,6 +1,8 @@
 import 'package:childon/components/location_row.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:getwidget/components/carousel/gf_carousel.dart';
+
+import 'filter_page.dart';
 
 class Explore extends StatefulWidget {
   const Explore({Key? key}) : super(key: key);
@@ -8,8 +10,6 @@ class Explore extends StatefulWidget {
   @override
   State<Explore> createState() => _ExploreState();
 }
-
-
 
 class _ExploreState extends State<Explore> {
   @override
@@ -22,14 +22,12 @@ class _ExploreState extends State<Explore> {
             child: Column(
               children: [
                 SizedBox(
-                  height: 70,
+                  height: 20,
                 ),
                 Center(
-                  child: Image.asset('assets/childon.png'),
+                  child: Image.asset('assets/logo.png',height: 200,),
                 ),
-                SizedBox(
-                  height: 40,
-                ),
+
                 TextFormField(
                   decoration: InputDecoration(
                       hintText: 'Search your city',
@@ -48,21 +46,26 @@ class _ExploreState extends State<Explore> {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                        width: 110,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Center(
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(Icons.compass_calibration_outlined),
-                              Text('Filters')
-                            ],
+                      InkWell(
+                        onTap:(){
+                          Navigator.push(context, CupertinoPageRoute(builder: (context)=>FilterPage()));
+                        },
+                        child: Container(
+                          width: 110,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Center(
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(Icons.compass_calibration_outlined),
+                                Text('Filters')
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -106,7 +109,9 @@ class _ExploreState extends State<Explore> {
                     ),
                   ),
                 ),
-
+                SizedBox(
+                  height: 20,
+                ),
               ],
             ),
           ),

@@ -24,9 +24,10 @@ class _SplashSecondState extends State<SplashSecond> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.pink.shade800,
       body: const Center(
         child: Image(
-          image: AssetImage('assets/childon.png'),
+          image: AssetImage('assets/logo.png'),
         ),
       ),
     );

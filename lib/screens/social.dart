@@ -24,14 +24,12 @@ class _SocialState extends State<Social> {
           child: Column(
             children: [
               SizedBox(
-                height: 70,
+                height: 20,
               ),
               Center(
-                child: Image.asset('assets/childon.png'),
+                child: Image.asset('assets/logo.png',height: 200,),
               ),
-              SizedBox(
-                height: 30,
-              ),
+
               Text(
                 'Zorlu Çocuk Tiyatrosu',
                 style: TextStyle(
