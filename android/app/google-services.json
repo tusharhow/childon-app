@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "686531479752",
+    "project_id": "childon-56238",
+    "storage_bucket": "childon-56238.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:686531479752:android:9e47ad65c4eb20b3cbbdfd",
+        "android_client_info": {
+          "package_name": "com.example.childon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "686531479752-rv9q8tqdulj9qg0rqc5tdjamhpm761hr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTRDB2iYkkdzUiGHYNTy5JhyRvlQWuYj0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "686531479752-rv9q8tqdulj9qg0rqc5tdjamhpm761hr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
