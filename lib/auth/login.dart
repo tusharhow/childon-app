@@ -1,5 +1,6 @@
 import 'package:childon/auth/signup.dart';
 import 'package:childon/controllers/auth_controller.dart';
+import 'package:childon/screens/homepage.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -21,42 +22,14 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Container(
-              child: Stack(
-            children: [
-              Container(
-                padding: EdgeInsets.fromLTRB(15.0, 110.0, 0.0, 0.0),
-                child: Text(
-                  'Hello',
-                  style: TextStyle(
-                    fontSize: 80.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.fromLTRB(15.0, 175.0, 0.0, 0.0),
-                child: Text(
-                  'There',
-                  style: TextStyle(
-                    fontSize: 80.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.fromLTRB(220.0, 175.0, 0.0, 0.0),
-                child: Text(
-                  '.',
-                  style: TextStyle(
-                    fontSize: 80.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.green,
-                  ),
-                ),
-              ),
-            ],
-          )),
+          SizedBox(height: 50.0),
+          Center(
+            child: Image.asset(
+              'assets/logo.png',
+              height: 250,
+              width: 250,
+            ),
+          ),
           Container(
             padding: EdgeInsets.only(top: 35.0, left: 20.0, right: 20.0),
             child: Column(
@@ -94,21 +67,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(
                   height: 5.0,
                 ),
-                Container(
-                  alignment: Alignment(1.0, 0.0),
-                  padding: EdgeInsets.only(top: 15.0, left: 20.0),
-                  child: InkWell(
-                    child: Text(
-                      'Forgot Password',
-                      style: TextStyle(
-                        color: Colors.green,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Montserrat',
-                        decoration: TextDecoration.underline,
-                      ),
-                    ),
-                  ),
-                ),
                 SizedBox(
                   height: 40.0,
                 ),
@@ -116,17 +74,19 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 40.0,
                   child: Material(
                     borderRadius: BorderRadius.circular(20.0),
-                    shadowColor: Colors.greenAccent,
-                    color: Colors.green,
-                    elevation: 7.0,
+                    color: Colors.blue,
                     child: GestureDetector(
                       onTap: () async {
-                        await authController.validLoginUser(
-                            emailController.text, passController.text);
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SignUpScreen()));
+                        await authController
+                            .validLoginUser(
+                                emailController.text, passController.text)
+                            .then((value) {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      BottomNavigationBarScreen()));
+                        });
                       },
                       child: Center(
                         child: Text(
@@ -142,39 +102,42 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 SizedBox(height: 20.0),
+                Container(
+                    padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                    child: Row(
+                      children: [
+                        Text('Dont' ' have an account?',
+                            style: TextStyle(
+                              fontFamily: 'Montserrat',
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                              fontSize: 18,
+                            )),
+                        SizedBox(width: 10),
+                        TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => SignUpScreen()));
+                            },
+                            child: Text(
+                              'Sign Up',
+                              style: TextStyle(
+                                fontFamily: 'Montserrat',
+                                fontWeight: FontWeight.bold,
+                                color: Colors.blue,
+                                fontSize: 20,
+                              ),
+                            ))
+                      ],
+                    )),
               ],
             ),
           ),
           SizedBox(
             height: 15.0,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'New to Spotify ?',
-                style: TextStyle(fontFamily: 'Montserrat'),
-              ),
-              SizedBox(
-                width: 5.0,
-              ),
-              InkWell(
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SignUpScreen()));
-                },
-                child: Text(
-                  'Register',
-                  style: TextStyle(
-                    color: Colors.green,
-                    fontFamily: 'Montserrat',
-                    fontWeight: FontWeight.bold,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              )
-            ],
-          )
         ],
       ),
     );

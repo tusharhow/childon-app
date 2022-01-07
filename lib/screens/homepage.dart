@@ -35,7 +35,8 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
             BottomNavigationBarItem(
                 icon: Icon(
                   Icons.search,
-                  size: 30, color: Colors.black,
+                  size: 30,
+                  color: Colors.black,
                 ),
                 title: Text(
                   'Explore',
@@ -44,14 +45,16 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
             BottomNavigationBarItem(
                 icon: ImageIcon(
                   AssetImage('assets/team.png'),
-                  size: 30, color: Colors.black,
+                  size: 30,
+                  color: Colors.black,
                 ),
                 title: Text('Social'),
                 backgroundColor: Colors.white),
             BottomNavigationBarItem(
                 icon: ImageIcon(
                   AssetImage('assets/feed.png'),
-                  size: 30, color: Colors.black,
+                  size: 30,
+                  color: Colors.black,
                 ),
                 title: Text('Feed'),
                 backgroundColor: Colors.white),
@@ -67,7 +70,8 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
                 icon: ImageIcon(
                   AssetImage(
                     'assets/user.png',
-                  ), color: Colors.black,
+                  ),
+                  color: Colors.black,
                   size: 30,
                 ),
                 title: Text('Me'),
@@ -76,7 +80,11 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
           type: BottomNavigationBarType.shifting,
           backgroundColor: Colors.black,
           currentIndex: _selectedIndex,
-          selectedItemColor: Colors.red,
+          selectedItemColor: Colors.black,
+          unselectedLabelStyle: TextStyle(color: Colors.black),
+          showUnselectedLabels: true,
+          unselectedFontSize: 15,
+          unselectedIconTheme: IconThemeData(color: Colors.black),
           iconSize: 45,
           onTap: (index) => setState(() {
             _selectedIndex = index;

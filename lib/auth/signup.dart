@@ -1,4 +1,6 @@
+import 'package:childon/auth/login.dart';
 import 'package:childon/controllers/auth_controller.dart';
+import 'package:childon/screens/homepage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -24,15 +26,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
             padding: EdgeInsets.all(10),
             child: ListView(
               children: <Widget>[
-                Container(
-                  alignment: Alignment.center,
-                  padding: EdgeInsets.all(10),
-                  child: Text(
-                    'Sign Up',
-                    style: TextStyle(
-                        color: Colors.blue,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 30),
+                SizedBox(height: 20.0),
+                Center(
+                  child: Image.asset(
+                    'assets/logo.png',
+                    height: 250,
+                    width: 250,
                   ),
                 ),
                 Container(
@@ -56,12 +55,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                 ),
-                FlatButton(
-                  onPressed: () {
-                    //forgot password screen
-                  },
-                  textColor: Colors.blue,
-                  child: Text('Forgot Password'),
+                SizedBox(
+                  height: 30,
                 ),
                 Container(
                     height: 50,
@@ -71,53 +66,53 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       color: Colors.blue,
                       child: Text('Sign Up'),
                       onPressed: () async {
-                        print(emailController.text);
-
-                        print(passController.text);
-                        await authController.addUser(
-                            emailController.text, passController.text);
+                        // print(passController.text);
+                        await authController
+                            .addUser(emailController.text, passController.text)
+                            .then((value) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => LoginScreen(),
+                            ),
+                          );
+                        });
                       },
                     )),
+                SizedBox(
+                  height: 20,
+                ),
                 Container(
+                    padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                     child: Row(
-                  children: [
-                    Text('Does not have account?'),
-                    FlatButton(
-                      textColor: Colors.blue,
-                      child: Text(
-                        'Sign in',
-                        style: TextStyle(fontSize: 20),
-                      ),
-                      onPressed: () {
-                        //signup screen
-                      },
-                    ),
-                  ],
-                  mainAxisAlignment: MainAxisAlignment.center,
-                ))
+                      children: [
+                        Text('Already have an account?',
+                            style: TextStyle(
+                              fontFamily: 'Montserrat',
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                              fontSize: 18,
+                            )),
+                        SizedBox(width: 10),
+                        TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => SignUpScreen()));
+                            },
+                            child: Text(
+                              'Log In',
+                              style: TextStyle(
+                                fontFamily: 'Montserrat',
+                                fontWeight: FontWeight.bold,
+                                color: Colors.blue,
+                                fontSize: 20,
+                              ),
+                            ))
+                      ],
+                    )),
               ],
             )));
-  }
-
-  createAccount() async {
-    try {
-      await _auth.createUserWithEmailAndPassword(
-          email: email, password: password);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('User Created Successfully'),
-          duration: Duration(seconds: 5),
-        ),
-      );
-
-      Navigator.of(context).pop();
-    } on FirebaseAuthException catch (e) {
-      showDialog(
-          context: context,
-          builder: (ctx) => AlertDialog(
-                title: Text(' Ops! Registration Failed'),
-                content: Text('${e.message}'),
-              ));
-    }
   }
 }
