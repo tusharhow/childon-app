@@ -17,9 +17,11 @@ class Feed extends StatelessWidget {
                   height: 20,
                 ),
                 Center(
-                  child: Image.asset('assets/logo.png',height: 200,),
+                  child: Image.asset(
+                    'assets/logo.png',
+                    height: 200,
+                  ),
                 ),
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -67,15 +69,20 @@ class Feed extends StatelessWidget {
                 SizedBox(
                   height: 20,
                 ),
-                FollowCard(),
+                FollowCard(
+                  name: 'Berkey',
+                  label: 'Bursa',
+                ),
                 SizedBox(
                   height: 15,
                 ),
-                FollowCard(),
+                FollowCard(
+                  name: 'Zehra',
+                  label: 'Istanbul',
+                ),
               ],
             ),
           ),
         ));
   }
 }
-

@@ -33,48 +33,53 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
         bottomNavigationBar: BottomNavigationBar(
           items: const [
             BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.search,
+                icon: ImageIcon(
+                  AssetImage('assets/search_logo.ico'),
                   size: 30,
                   color: Colors.black,
                 ),
-                title: Text(
-                  'Explore',
-                ),
+                title: Text('Explore',
+                    style: TextStyle(color: Colors.black, fontSize: 13)),
                 backgroundColor: Colors.white),
             BottomNavigationBarItem(
                 icon: ImageIcon(
-                  AssetImage('assets/team.png'),
+                  AssetImage('assets/social_logo.ico'),
                   size: 30,
                   color: Colors.black,
                 ),
-                title: Text('Social'),
+                title: Text('Social',
+                    style: TextStyle(color: Colors.black, fontSize: 13)),
                 backgroundColor: Colors.white),
             BottomNavigationBarItem(
                 icon: ImageIcon(
-                  AssetImage('assets/feed.png'),
+                  AssetImage('assets/feed_logo.ico'),
                   size: 30,
                   color: Colors.black,
                 ),
-                title: Text('Feed'),
+                title: Text('Feed',
+                    style: TextStyle(color: Colors.black, fontSize: 13)),
                 backgroundColor: Colors.white),
             BottomNavigationBarItem(
                 icon: ImageIcon(
-                  AssetImage('assets/noti.png'),
+                  AssetImage('assets/notification_logo.ico'),
                   size: 30,
                   color: Colors.black,
                 ),
-                title: Text('Notifications'),
+                title: Text('Notifications',
+                    style: TextStyle(color: Colors.black, fontSize: 11)),
                 backgroundColor: Colors.white),
             BottomNavigationBarItem(
                 icon: ImageIcon(
                   AssetImage(
-                    'assets/user.png',
+                    'assets/me_logo.ico',
                   ),
                   color: Colors.black,
                   size: 30,
                 ),
-                title: Text('Me'),
+                title: Text(
+                  'Me',
+                  style: TextStyle(color: Colors.black, fontSize: 14),
+                ),
                 backgroundColor: Colors.white),
           ],
           type: BottomNavigationBarType.shifting,

@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 class FollowCard extends StatelessWidget {
   const FollowCard({
     Key? key,
+    required this.label,
+    required this.name,
   }) : super(key: key);
-
+  final name;
+  final label;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,7 +22,7 @@ class FollowCard extends StatelessWidget {
           children: [
             CircleAvatar(
               backgroundImage: NetworkImage(
-                  'https://scontent.fdac24-1.fna.fbcdn.net/v/t39.30808-6/262919208_445662436999188_2243977371976064779_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=174925&_nc_ohc=-Fx97YpCuc8AX83qZtF&_nc_ht=scontent.fdac24-1.fna&oh=00_AT9GLs--gkCX87kSM9mgt_WvNOZO3MfeCrvzeao5_7AwrQ&oe=61DA5D35'),
+                  'https://media.istockphoto.com/photos/smiling-indian-man-looking-at-camera-picture-id1270067126?k=20&m=1270067126&s=612x612&w=0&h=ZMo10u07vCX6EWJbVp27c7jnnXM2z-VXLd-4maGePqc='),
               radius: 40,
             ),
             SizedBox(
@@ -30,7 +33,7 @@ class FollowCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Tushar',
+                  name,
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w700,
@@ -38,7 +41,7 @@ class FollowCard extends StatelessWidget {
                   textAlign: TextAlign.justify,
                 ),
                 Text(
-                  'Bursa',
+                  label,
                   style: TextStyle(
                     fontSize: 15,
                     color: Colors.black54,

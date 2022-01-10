@@ -7,14 +7,14 @@ class Social extends StatefulWidget {
   @override
   State<Social> createState() => _SocialState();
 }
-final List<String> imageList = [
-  "https://cdn.pixabay.com/photo/2017/12/03/18/04/christmas-balls-2995437_960_720.jpg",
-  "https://cdn.pixabay.com/photo/2017/12/13/00/23/christmas-3015776_960_720.jpg",
-  "https://cdn.pixabay.com/photo/2019/12/19/10/55/christmas-market-4705877_960_720.jpg",
-  "https://cdn.pixabay.com/photo/2019/12/20/00/03/road-4707345_960_720.jpg",
 
-  "https://cdn.pixabay.com/photo/2016/11/22/07/09/spruce-1848543__340.jpg"
+final List<String> imageList = [
+  "assets/1.jpg",
+  "assets/2.jpg",
+  "assets/3.jpg",
+  "assets/4.jpg",
 ];
+
 class _SocialState extends State<Social> {
   @override
   Widget build(BuildContext context) {
@@ -27,35 +27,35 @@ class _SocialState extends State<Social> {
                 height: 20,
               ),
               Center(
-                child: Image.asset('assets/logo.png',height: 200,),
+                child: Image.asset(
+                  'assets/logo.png',
+                  height: 200,
+                ),
               ),
-
               Text(
-                'Zorlu Çocuk Tiyatrosu',
+                'Snowpark,Torium Shoping Mall',
                 style: TextStyle(
                   fontSize: 19,
                   fontWeight: FontWeight.w700,
-
                 ),
                 textAlign: TextAlign.justify,
               ),
               SizedBox(
                 height: 15,
               ),
-
               GFCarousel(
                 autoPlay: true,
                 activeIndicator: Colors.red,
                 passiveIndicator: Colors.amber,
                 pagination: true,
                 items: imageList.map(
-                      (url) {
+                  (url) {
                     return Container(
                       margin: EdgeInsets.all(8.0),
                       child: ClipRRect(
                         borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                        child: Image.network(url,
-                            fit: BoxFit.cover, width: 1000.0),
+                        child:
+                            Image.asset(url, fit: BoxFit.cover, width: 1000.0),
                       ),
                     );
                   },
@@ -70,23 +70,25 @@ class _SocialState extends State<Social> {
                 height: 20,
               ),
               SingleChildScrollView(
-               scrollDirection: Axis.horizontal,
+                scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
                     InkWell(
-                      onTap:(){},
+                      onTap: () {},
                       child: Container(
                         height: 55,
                         width: 110,
                         color: Colors.white,
-                        child: Center(child:  Text(
-                          'Features',
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w700,
+                        child: Center(
+                          child: Text(
+                            'Features',
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w700,
+                            ),
+                            textAlign: TextAlign.justify,
                           ),
-                          textAlign: TextAlign.justify,
-                        ),),
+                        ),
                       ),
                     ),
                     Divider(
@@ -96,19 +98,21 @@ class _SocialState extends State<Social> {
                       endIndent: 3,
                     ),
                     InkWell(
-                      onTap:(){},
+                      onTap: () {},
                       child: Container(
                         height: 55,
                         width: 110,
                         color: Colors.white,
-                        child: Center(child:  Text(
-                          'Comments',
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w700,
+                        child: Center(
+                          child: Text(
+                            'Comments',
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w700,
+                            ),
+                            textAlign: TextAlign.justify,
                           ),
-                          textAlign: TextAlign.justify,
-                        ),),
+                        ),
                       ),
                     ),
                     Divider(
@@ -118,19 +122,21 @@ class _SocialState extends State<Social> {
                       endIndent: 3,
                     ),
                     InkWell(
-                      onTap:(){},
+                      onTap: () {},
                       child: Container(
                         height: 55,
                         width: 110,
                         color: Colors.white,
-                        child: Center(child:  Text(
-                          'Working hours',
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w700,
+                        child: Center(
+                          child: Text(
+                            'Working hours',
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w700,
+                            ),
+                            textAlign: TextAlign.justify,
                           ),
-                          textAlign: TextAlign.justify,
-                        ),),
+                        ),
                       ),
                     ),
                     Divider(
@@ -140,19 +146,21 @@ class _SocialState extends State<Social> {
                       endIndent: 3,
                     ),
                     InkWell(
-                      onTap:(){},
+                      onTap: () {},
                       child: Container(
                         height: 55,
                         width: 110,
                         color: Colors.white,
-                        child: Center(child:  Text(
-                          'Social media',
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w700,
+                        child: Center(
+                          child: Text(
+                            'Social media',
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w700,
+                            ),
+                            textAlign: TextAlign.justify,
                           ),
-                          textAlign: TextAlign.justify,
-                        ),),
+                        ),
                       ),
                     ),
                   ],
@@ -161,6 +169,5 @@ class _SocialState extends State<Social> {
             ],
           ),
         ));
-
   }
 }
