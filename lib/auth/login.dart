@@ -35,6 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               children: [
                 TextField(
+                  controller: emailController,
                   decoration: InputDecoration(
                       labelText: 'EMAIL',
                       labelStyle: TextStyle(
@@ -51,6 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 20,
                 ),
                 TextField(
+                  controller: passController,
                   decoration: InputDecoration(
                       labelText: 'PASSWORD',
                       labelStyle: TextStyle(
@@ -71,7 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 40.0,
                 ),
                 Container(
-                  height: 40.0,
+                  height: 45.0,
                   child: Material(
                     borderRadius: BorderRadius.circular(20.0),
                     color: Colors.blue,

@@ -1,8 +1,12 @@
 import 'package:childon/auth/login.dart';
 import 'package:childon/auth/signup.dart';
+import 'package:childon/controllers/auth_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/components/carousel/gf_carousel.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import 'homepage.dart';
 
 class AboutMe extends StatefulWidget {
   const AboutMe({Key? key}) : super(key: key);
@@ -11,14 +15,32 @@ class AboutMe extends StatefulWidget {
   State<AboutMe> createState() => _AboutMeState();
 }
 
-// final List<String> imageList = [
-//   "https://cdn.pixabay.com/photo/2017/12/03/18/04/christmas-balls-2995437_960_720.jpg",
-//   "https://cdn.pixabay.com/photo/2017/12/13/00/23/christmas-3015776_960_720.jpg",
-//   "https://cdn.pixabay.com/photo/2019/12/19/10/55/christmas-market-4705877_960_720.jpg",
-//   "https://cdn.pixabay.com/photo/2019/12/20/00/03/road-4707345_960_720.jpg",
-//   "https://cdn.pixabay.com/photo/2016/11/22/07/09/spruce-1848543__340.jpg"
-// ];
+AuthController authController = AuthController();
+var auth;
+
 class _AboutMeState extends State<AboutMe> {
+  names() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      auth = prefs.getString('authToken');
+    });
+  }
+
+  remove() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.remove('authToken');
+    setState(() {
+      auth = null;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    names();
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,93 +81,137 @@ class _AboutMeState extends State<AboutMe> {
               //     });
               //   },
               // ),
+
               SizedBox(
                 height: 100,
               ),
-              Text(
-                'Welcome to ChildOn',
-                style: TextStyle(
-                  fontSize: 22,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w700,
-                ),
-                textAlign: TextAlign.justify,
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              Text(
-                'Join Us and Add Child-Friendly Places',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.white,
-                ),
-                textAlign: TextAlign.justify,
-              ),
-              SizedBox(
-                height: 30,
-              ),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          CupertinoPageRoute(
-                              builder: (context) => SignUpScreen()));
-                    },
-                    child: Container(
-                      height: 55,
-                      width: 150,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Center(
-                        child: Text(
-                          'Register',
+              auth == null
+                  ? Column(
+                      children: [
+                        Text(
+                          'Welcome to ChildOn',
                           style: TextStyle(
-                            fontSize: 17,
+                            fontSize: 22,
+                            color: Colors.white,
                             fontWeight: FontWeight.w700,
                           ),
                           textAlign: TextAlign.justify,
                         ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 15,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          CupertinoPageRoute(
-                              builder: (context) => LoginScreen()));
-                    },
-                    child: Container(
-                      height: 55,
-                      width: 150,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Center(
-                        child: Text(
-                          'Login',
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Text(
+                          'Join Us and Add Child-Friendly Places',
                           style: TextStyle(
-                            fontSize: 17,
+                            fontSize: 18,
+                            color: Colors.white,
+                          ),
+                          textAlign: TextAlign.justify,
+                        ),
+                        SizedBox(
+                          height: 30,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    CupertinoPageRoute(
+                                        builder: (context) => SignUpScreen()));
+                              },
+                              child: Container(
+                                height: 55,
+                                width: 150,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    'Register',
+                                    style: TextStyle(
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                    textAlign: TextAlign.justify,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    CupertinoPageRoute(
+                                        builder: (context) => LoginScreen()));
+                              },
+                              child: Container(
+                                height: 55,
+                                width: 150,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    'Login',
+                                    style: TextStyle(
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                    textAlign: TextAlign.justify,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    )
+                  : Column(
+                      children: [
+                        Text(
+                          'Welcome to ChildOn',
+                          style: TextStyle(
+                            fontSize: 22,
+                            color: Colors.white,
                             fontWeight: FontWeight.w700,
                           ),
                           textAlign: TextAlign.justify,
                         ),
-                      ),
-                    ),
-                  ),
-                ],
-              )
+                        SizedBox(
+                          height: 50,
+                        ),
+                        SizedBox(
+                          height: 50,
+                          width: 130,
+                          child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.teal, // This is what you need!
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  remove().then((value) {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                BottomNavigationBarScreen()));
+                                  });
+                                });
+                              },
+                              child: Text(
+                                'Log Out',
+                                style: TextStyle(fontSize: 20),
+                              )),
+                        ),
+                      ],
+                    )
             ],
           ),
         ));
